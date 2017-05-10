@@ -1,0 +1,9 @@
+Nazdar {USERNAME},
+
+Toto je upozornění že administrátor fóra {FORUM_NAME} změnil nastavení odběrů přehledů. Pro zobrazení aktuálního nastavení klikni na následující odkaz:
+
+{DIGESTS_UCP_LINK}
+
+S pozdravem,
+
+{FORUM_NAME} administrátoři

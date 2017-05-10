@@ -1,0 +1,7 @@
+Nazdar {USERNAME},
+
+Toto je upozornění že tě administrátor fóra {FORUM_NAME} odhlásil z odběru přehledu příspěvků.
+
+S pozdravem,
+
+{FORUM_NAME} administrátoři

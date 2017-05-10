@@ -1,0 +1,8 @@
+Nazdar {USERNAME},
+
+Toto je upozornění že tě administrátor fóra {FORUM_NAME} přihlásil k odběru {DIGESTS_TYPE} {DIGESTS_FORMAT} přehledu příspěvků. Pokud nechceš dostávat přehledy, můžeš jejich odběr odhlásit v uživatelském panelu pod záložkou "Přehledy". Odkaz přímo na nastevení přehledů:
+{DIGESTS_UCP_LINK}
+
+S pozdravem,
+
+{FORUM_NAME} administrátoři
