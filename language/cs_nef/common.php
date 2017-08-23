@@ -32,7 +32,8 @@ $lang = array_merge($lang, array(
 	'DIGESTS_BLOCK_IMAGES_EXPLAIN'		=> 'Znemožní zobrazení obrázků v přehledech, včetně smajlíků a obrázků přiložených příspěvkům nebo soukromým zprávám. Vhodné pro pomalá přípojení. Textové přehledy nikdy obrázky nezobrazují.',
 	'DIGESTS_BOARD_LIMIT'				=> '%d (Nastavený limit)',
 	'DIGESTS_BY'						=> 'Od',
-	'DIGESTS_CLOSED_QUOTE'				=> '"',
+	'DIGESTS_CLOSED_QUOTE'				=> '&rdquo;',
+	'DIGESTS_CLOSED_QUOTE_TEXT'			=> '"',
 	'DIGESTS_COUNT_LIMIT'				=> 'Maximální počet příspěvků v přehledu',
 	'DIGESTS_COUNT_LIMIT_EXPLAIN'		=> 'Vlož číslo větší než 0 pokud chceš omezit počet příspěvků v přehledu.',
 	'DIGESTS_DAILY'						=> 'Denně',
@@ -44,7 +45,6 @@ $lang = array_merge($lang, array(
 	'DIGESTS_FILTER_ERROR'				=> 'Zasílač emailů byl zavolán s neplatným user_digest_filter_type = %s',
 	'DIGESTS_FILTER_FOES'				=> 'Filtrovat příspěvky od mých nepřátel',
 	'DIGESTS_FILTER_TYPE'				=> 'Filtrovat typy příspěvků',
-
 	'DIGESTS_FORMAT_HTML'				=> 'HTML',
 	'DIGESTS_FORMAT_HTML_EXPLAIN'		=> 'HTML umožňuje formátování, BBKódy a podpisy (pokud jsou povoleny). Jsou použity i styly pokud to váš emailový program podporuje',
 	'DIGESTS_FORMAT_HTML_CLASSIC'		=> 'HTML, příspěvky jsou vloženy v tabulce',
@@ -89,7 +89,8 @@ $lang = array_merge($lang, array(
 	'DIGESTS_NO_TIMEZONE'				=> 'Musíš <a href="%s">upřesnit časové pásmo</a> ve tvém profilu dříve než se přihlásíš k přehledům.',
 	'DIGESTS_NONE'						=> 'Žádné (odhlásit)',
 	'DIGESTS_ON'						=> 'na',
-	'DIGESTS_OPEN_QUOTE'				=> '"',
+	'DIGESTS_OPEN_QUOTE'				=> '&ldquo;',
+	'DIGESTS_OPEN_QUOTE_TEXT'			=> '"',
 	'DIGESTS_PM'						=> ' SZ', // not used if date/time formats do not permit AM and PM
 	'DIGESTS_PM_SUBJECT'				=> 'Předmět soukromé zprávy',
 	'DIGESTS_POST_IMAGE_TEXT'			=> '<br />(Klikněte na obrázek pro zobrazení v plné velikoti.)',
