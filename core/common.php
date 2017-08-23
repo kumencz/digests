@@ -57,54 +57,43 @@ class common
 
 	public function make_tz_offset ($tz_text, $show_sign = false)
 	{
-		// This function translates a text timezone (like America/New_York) to an hour offset from GMT, doing magic like figuring out DST
-		$tz = new \DateTimeZone($tz_text);
-		$datetime_tz = new \DateTime('now', $tz);
-		$timeOffset = $tz->getOffset($datetime_tz) / 3600;
-		return ($show_sign && $timeOffset >= 0) ? '+' . $timeOffset : $timeOffset;
-	}
-
-	public function dateFormatToStrftime($dateFormat, $lang="en") {
-
-		/*
-		* Convert a date format to a strftime format
-		*
-		* Timezone conversion is done for unix. Windows users must exchange %z and %Z.
-		*
-		* Unsupported date formats : n, t, L, B, G, u, e, I, P, Z, c, r
-		* Unsupported strftime formats : %U, %W, %C, %g, %r, %R, %T, %X, %c, %D, %F, %x
-		*
-		* @param string $dateFormat a date format
-		* @param strong $lang a language, like en or fr_FR
-		* @return string
-		*/
-		$caracs = array(
-			// Day - no strf eq : S
-			'd' => '%d', 'D' => '%a', 'j' => '%e', 'l' => '%A', 'N' => '%u', 'w' => '%w', 'z' => '%j', 'S' => '',
-			// Week - no date eq : %U, %W
-			'W' => '%V',
-			// Month - no strf eq : n, t
-			'F' => '%B', 'm' => '%m', 'M' => '%b',
-			// Year - no strf eq : L; no date eq : %C, %g
-			'o' => '%G', 'Y' => '%Y', 'y' => '%y',
-			// Time - no strf eq : B, G, u; no date eq : %r, %R, %T, %X
-			'a' => '%P', 'A' => '%p', 'g' => '%l', 'h' => '%I', 'H' => '%H', 'i' => '%M', 's' => '%S',
-			// Timezone - no strf eq : e, I, P, Z
-			'O' => '%z', 'T' => '%Z',
-			// Full Date / Time - no strf eq : c, r; no date eq : %c, %D, %F, %x
-			'U' => '%s'
-		);
-
-		if (strlen($lang) == 2)
+		// This function translates a text timezone (like America/New_York) to an hour offset from UTC, doing magic like figuring out if DST applies
+		if (!$this->validate_date($tz_text))
 		{
-			$locale = trim($lang) . '_' . strtoupper($lang);
+			// Date string is invalid so assume UTC
+			$timeOffset = 0;
 		}
 		else
 		{
-			$locale = $lang;
+			$tz = new \DateTimeZone($tz_text);
+			$datetime_tz = new \DateTime('now', $tz);
+			$timeOffset = $tz->getOffset($datetime_tz) / 3600;
 		}
-		setlocale(LC_ALL, $locale);
-		return strtr((string)$dateFormat, $caracs);
+		return ($show_sign && $timeOffset >= 0) ? '+' . $timeOffset : $timeOffset;
+	}
+
+	public function validate_date($date)
+	{
+		// This functions checks to see if a date format (like America/New_York) is valid. If not, it returns false.
+		$d = \DateTime::createFromFormat('e', $date);
+		return $d && $d->format('e') === $date;
+	}
+
+	public function check_send_hour($hour)
+	{
+		// Ensures an hour falls between 0 and 24, adjusts if outside the range.
+		if ($hour >= 24)
+		{
+			return (float) ($hour - 24);
+		}
+		else if ($hour < 0)
+		{
+			return (float) ($hour + 24);
+		}
+		else
+		{
+			return (float) $hour;
+		}
 	}
 
 }
